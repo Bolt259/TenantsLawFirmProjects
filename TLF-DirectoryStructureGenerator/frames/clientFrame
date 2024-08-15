@@ -1,0 +1,186 @@
+frame = [
+    {
+        'name': 'client_name',
+        'type': 'folder',
+        'contents': [
+            {
+                'name': 'Internal Documents',
+                'type': 'folder',
+                'contents': [
+                    {
+                        'name': 'Internal Client',
+                        'type': 'folder',
+                        'content': [
+                            {
+                                'name': 'Retainer',
+                                'type': 'folder',
+                                'content': [
+                                    {
+                                        'name': 'Retainer',
+                                        'type': 'file',
+                                        'content': ''
+                                    }
+                                ]
+                            },
+                            {
+                                'name': 'HIIPA Form',
+                                'type': 'file',
+                                'content': ''
+                            },
+                            {
+                                'name': 'Fee Waiver',
+                                'type': 'file',
+                                'content': ''
+                            },
+                            {
+                                'name': 'One Pagers',
+                                'type': 'file',
+                                'content': ''
+                            },
+                            {
+                                'name': 'Client Communication Logs',
+                                'type': 'Folder',
+                                'content': [
+
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        'name': 'Opposing Counsel',
+                        'type': 'folder',
+                        'content': [
+                            {
+                                'name': 'OC Communication Logs',
+                                'type': 'Folder',
+                                'content': [
+
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        'name': 'Court Docs',
+                        'type': 'folder',
+                        'content': [
+                            
+                        ]
+                    }
+                ]
+            },
+            {
+                'name': 'Discovery',
+                'type': 'folder',
+                'contents': [
+                    {
+                        'name': 'Plaintiff',
+                        'type': 'folder',
+                        'content': [
+                            {
+                                'name': 'Plaintiff Responses'
+                                'type': 'folder',
+                                'content': [
+
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        'name': 'Defendant',
+                        'type': 'folder',
+                        'content': [
+                            {
+                                'name': 'Defendant Responses'
+                                'type': 'folder',
+                                'content': [
+                                    
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        'name': 'Depositions',
+                        'type': 'folder',
+                        'content': [
+                            
+                        ]
+                    }
+                ]
+            },
+            {
+                'name': 'Documents',
+                'type': 'folder',
+                'contents': [
+                    {
+                        'name': 'Correspondence with LL',
+                        'type': 'folder',
+                        'content': [
+                            {
+                                'name': 'Communication between client and landlord'
+                                'type': 'folder'
+                                'content': [
+
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        'name': 'Housing Records',
+                        'type': 'folder',
+                        'content': [
+                            {
+                                'name': 'Housing Authority Records'
+                                'type': 'folder'
+                                'content': [
+                                    
+                                ]
+                            },
+                            {
+                                'name': 'Health Dept Records'
+                                'type': 'folder'
+                                'content': [
+                                    
+                                ]
+                            },
+                            {
+                                'name': 'Building & Safety Records'
+                                'type': 'folder'
+                                'content': [
+                                    
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        'name': 'Insurance',
+                        'type': 'folder',
+                        'content': [
+
+                        ]
+                    },
+                    {
+                        'name': 'Lease',
+                        'type': 'folder',
+                        'content': [
+
+                        ]
+                    },
+                    {
+                        'name': 'Loss of Earnings',
+                        'type': 'folder',
+                        'content': [
+
+                        ]
+                    },
+                    {
+                        'name': 'Lost Property',
+                        'type': 'folder',
+                        'content': [
+
+                        ]
+                    },
+                ]
+            }
+        ]
+    }
+]
