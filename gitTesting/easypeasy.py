@@ -1,5 +1,10 @@
 ### TEST CODE BS
 
+# worlds are contained in me now
+
+# new world order necessary
+### TEST CODE BS
+
 class Point:
     def __init__(self, value=0, attributes=None):
         self.value = value
