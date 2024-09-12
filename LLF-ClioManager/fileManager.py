@@ -168,11 +168,11 @@ try:
     #         print(f"{key}: {value}")
     #     print("-" * 40)  # Separator between files
         
-    for matter in matters:
-        print("\nMatter Metadata:")
-        for key, value in matter.items():
-            print(f"{key}: {value}")
-        print("-" * 40)  # Separator between matters
+    # for matter in matters:
+    #     print("\nMatter Metadata:")
+    #     for key, value in matter.items():
+    #         print(f"{key}: {value}")
+    #     print("-" * 40)  # Separator between matters
 
 
     # organize_files_by_matter(access_token)
