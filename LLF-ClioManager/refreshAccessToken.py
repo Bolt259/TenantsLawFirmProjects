@@ -4,6 +4,8 @@ import os
 from datetime import datetime, timedelta, timezone
 from dotenv import load_dotenv
 
+# DEPRICATED
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -23,13 +25,34 @@ def write_json(file_path, data):
         json.dump(data, file, indent=4)
 
 
+def token_has_expired(expiry_time_str):
+    """Check if the current token has expired."""
+    if not expiry_time_str:
+        return True  # If no expiry time is found, assume the token has expired.
+    
+    expiry_time = datetime.fromisoformat(expiry_time_str)
+    current_time = datetime.now(timezone.utc)
+    
+    # If current time is past the expiry time, return True.
+    return current_time >= expiry_time
+
+
 def refresh_token():
+    """Refresh the token if it has expired."""
     # Step 1: Read the existing tokens
     data = read_json(TOKEN_FILE)
     refresh_token = data.get('refresh_token')
+    expiry_time = data.get('expiry_time')
 
     if not refresh_token:
         raise ValueError("Refresh token not found in JSON file.")
+
+    # Step 2: Check if the current access token has expired
+    if not token_has_expired(expiry_time):
+        print("Token is still valid, no need to refresh.")
+        return  # Exit the function if the token is still valid.
+
+    print("Token has expired, refreshing...")
 
     token_url = 'https://app.clio.com/oauth/token'
     data = {
@@ -42,7 +65,7 @@ def refresh_token():
         'Content-Type': 'application/x-www-form-urlencoded'
     }
 
-    # Step 2: Request a new access token using the refresh token
+    # Step 3: Request a new access token using the refresh token
     response = requests.post(token_url, data=data, headers=headers)
 
     # Helpful response message upon error
@@ -52,7 +75,7 @@ def refresh_token():
 
     new_tokens = response.json()
 
-    # Step 3: Update the JSON file with the new access token and expiry time
+    # Step 4: Update the JSON file with the new access token and expiry time
     data['access_token'] = new_tokens.get('access_token')
     # Update if a new refresh token is provided
     data['refresh_token'] = new_tokens.get('refresh_token', refresh_token)
