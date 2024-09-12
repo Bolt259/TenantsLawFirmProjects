@@ -73,6 +73,28 @@ def list_clients(access_token: str) -> List[Dict[str, Any]]:
 
     return clients
 
+# def address
+
+def list_templates(access_token: str):
+    api_url = "https://grow.clio.com/api/v1/templates/118918/download"  # Hypothetical URL
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-Type': 'application/json'
+    }
+    
+    response = requests.get(api_url, headers=headers)
+    response.raise_for_status()  # Raises an error for bad HTTP responses
+    
+    # Save the template as a file
+    with open("template_output.txt", "wb") as file:
+        file.write(response.content)
+
+    templates = response.json().get('data', [])
+
+    # Print each template's name
+    for template in templates:
+        print(f"Template Name: {template['name']}")
+
 
 '''# Function to list matters
 def list_matters(access_token: str) -> List[Dict[str, Any]]:
@@ -118,7 +140,7 @@ def move_file_to_folder(access_token: str, file_id: str, folder_id: str) -> None
     response = requests.put(api_url, headers=headers, json=file_data)
     response.raise_for_status()  # Raise HTTPError for bad responses
 
-# Function to organize files by matter name
+'''# Function to organize files by matter name
 def organize_files_by_matter(access_token: str) -> None:
     files = list_files(access_token)
     matters = list_matters(access_token)
@@ -141,7 +163,81 @@ def organize_files_by_matter(access_token: str) -> None:
     for file in files:
         matter_name = file['matter']['display_number'] + ' - ' + file['matter']['description']
         if matter_name in matter_folders:
-            move_file_to_folder(access_token, file['id'], matter_folders[matter_name])
+            move_file_to_folder(access_token, file['id'], matter_folders[matter_name])'''
+
+###
+def get_custom_fields(access_token, matter_id):
+    api_url = f"https://app.clio.com/api/v4/matters/{matter_id}/custom_fields"
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-Type': 'application/json'
+    }
+
+    response = requests.get(api_url, headers=headers)
+    response.raise_for_status()  # Check for errors
+
+    custom_fields = response.json().get('data', [])
+    for field in custom_fields:
+        field_name = field.get('name')
+        field_value = field.get('value')
+        print(f"Custom Field: {field_name}, Value: {field_value}")
+
+# Function to retrieve the list of all matters
+def get_all_matters(access_token):
+    api_url = "https://app.clio.com/api/v4/matters"
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-Type': 'application/json'
+    }
+
+    # Fetching all matters
+    response = requests.get(api_url, headers=headers)
+    response.raise_for_status()
+
+    return response.json().get('data', [])
+
+# Function to retrieve custom fields for a specific matter
+def get_custom_fields_for_matter(access_token, matter_id):
+    api_url = f"https://app.clio.com/api/v4/matters/{matter_id}/custom_fields"
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-Type': 'application/json'
+    }
+
+    try:
+        response = requests.get(api_url, headers=headers)
+        response.raise_for_status()
+
+        return response.json().get('data', [])
+
+    except requests.exceptions.HTTPError as http_err:
+        if response.status_code == 404:
+            print(f"No custom fields found for Matter ID: {matter_id}")
+        else:
+            print(f"HTTP error occurred: {http_err}")
+        return []
+    except Exception as err:
+        print(f"An error occurred: {err}")
+        return []
+    
+    
+# Main function to get the 'Subject Property Address' custom field for all matters
+def get_subject_property_address_for_all_matters(access_token):
+    matters = get_all_matters(access_token)
+
+    for matter in matters:
+        matter_id = matter.get('id')
+        matter_name = matter.get('description')
+
+        custom_fields = get_custom_fields_for_matter(access_token, matter_id)
+        
+        for field in custom_fields:
+            field_name = field.get('name')
+            # print(f"Field: {field_name}")
+            if field_name == 'Subject Property Address':
+                field_value = field.get('value')
+                print(f"Matter: {matter_name} (ID: {matter_id}), Subject Property Address: {field_value}")
+                break   # Stop checking after finding the desired field
 
 # Main script
 try:
@@ -152,6 +248,11 @@ try:
     contacts = list_clients(access_token)
     users = list_category(access_token, 'users')
     activities = list_category(access_token, 'activities')
+    
+    # custom_fields = get_custom_fields(access_token, '1327877119')
+    get_subject_property_address_for_all_matters(access_token)
+    
+    # list_templates(access_token)
         
     # for contact in contacts:
     #     print(f"\nClient Name: {contact['name']}, Addresses: {contact['addresses']}")
@@ -168,11 +269,11 @@ try:
     #         print(f"{key}: {value}")
     #     print("-" * 40)  # Separator between files
         
-    for matter in matters:
-        print("\nMatter Metadata:")
-        for key, value in matter.items():
-            print(f"{key}: {value}")
-        print("-" * 40)  # Separator between matters
+    # for matter in matters:
+    #     print("\nMatter Metadata:")
+    #     for key, value in matter.items():
+    #         print(f"{key}: {value}")
+    #     print("-" * 40)  # Separator between matters
 
 
     # organize_files_by_matter(access_token)

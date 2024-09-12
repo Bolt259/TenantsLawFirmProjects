@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0331YR7VDY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-0331YR7VDY');
+
+    document.addEventListener('turbo:load', function(event) {
+      if (typeof gtag === 'function') {
+        gtag('config', 'G-0331YR7VDY', {
+          'page_location': event.detail.url
+        })
+      }
+    })
+  </script>
+
+      <script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"5600082"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
+
+    <script>
+!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
+analytics.load("C2DFCkjhkqeEc1yD55zjVMCwvBGFRlFk");
+analytics.page();
+}}();
+</script>
+
+    <title>Login | Clio</title>
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="89IwkTaE38gxweUdA5LmbI939wlcWuESToCEz4pd21Lt3yKrhfT8IbWA6fdU_YUwvtbzm44J8yPjQ2wo_BtnLA" />
+    <meta name="Secure login page for Clio. Sign in to Clio, the leader in cloud-based legal technology.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="canonical" href="https://account.clio.com/">
+    <link rel="stylesheet" media="all" href="/assets/application-4bbfce05aa9ff3bc94da03f6f4aedd12d73b6a30a97f2e4565b1a419f0094d22.css" data-turbo-track="reload" />
+    <script src="/assets/application-e878404d13681301ac7881b918435a29e33eae19295ebb6d521c42b9ffe878df.js" data-turbo-track="reload" defer="defer"></script>
+    <script>
+      var attributionScript = document.createElement('script');
+      attributionScript.src = '//www.clio.com/wp-content/themes/clio/assets/js/attribution.min.js?v=' + Date.now();
+      attributionScript.type = 'text/javascript';
+      document.getElementsByTagName('head')[0].appendChild(attributionScript);
+    </script>
+  </head>
+  <body data-turbo="false" x-data>
+    <header class="ui-header">
+        <a class="ui-header__logo_link" href="https://clio.com/">
+          <img alt="Clio Logo" src="/images/brand-logotype-grow.svg" />
+</a>    </header>
+    <main class="ui-main">
+      <div class="login ">
+        <div class="login__form-container">
+          <div class="card login__card" x-multitab-login x-login-expiry>
+  <h1 class="card__header">Sign in to Clio Grow</h1>
+  
+
+
+  <form novalidate="novalidate" id="email-form" x-data="formComponent" action="/ask_for_password?challenge=335fa7390b364bdb8857a31e015045a0" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="ZrHerqVo2GqGlgLBdL5Jk55_SNkwudjtHB1aareHOgc7lb3uEMltxrfoOHev8OOAGbCTk-l7J20O7WZCG9YrOw" autocomplete="off" />
+    <input type="hidden" name="challenge" id="challenge" value="335fa7390b364bdb8857a31e015045a0" autocomplete="off" />
+    <div class="form-field">
+      <label class="form-field__label" for="email">Email</label>
+      <input type="email" name="email" id="email" maxlength="255" class="form-field__input" autofocus="autofocus" aria-label="Email" />
+    </div>
+    <div class="mb-xl">
+        <a href="https://grow.clio.com/users/confirmation/new">
+          I didn’t receive confirmation instructions
+        </a>
+    </div>
+    <div class="button-group">
+      <button name="button" type="submit" aria-label="Next: Password" class="button button--primary" data-disable-with="Next: Password" id="next" role="button">Next: Password</button>
+    </div>
+</form></div>
+
+
+
+          <div class="ui-help">
+  <p align="center">
+    <strong>Have questions or need help?</strong>
+    <br/>
+    <a href="https://help.clio.com" target="_blank">
+      Visit the Clio Help Center
+    </a>
+    or give us a call at 1-888-858-2546 (Ext 2).
+  </p>
+</div>
+
+        </div>
+        
+      </div>
+    </main>
+    <footer class="ui-footer">
+      <p>
+  We know that keeping your data secure and safe is important.
+  Learn more about our
+  <a href=https://grow.clio.com/security target="_blank" aria-label="Learn more about our security">security</a>
+  and our <a href=https://www.clio.com/privacy target="_blank" aria-label="Learn more about our privacy policy">privacy policy</a>.
+</p>
+<p>Copyright © 2024 Themis Solutions Inc.</p>
+
+    </footer>
+  </body>
+</html>
