@@ -3,11 +3,13 @@ import requests
 import os
 from datetime import datetime, timedelta, timezone
 from dotenv import load_dotenv
+from fileManager import load_tokens
 
 # Load environment variables from .env file
 load_dotenv()
 
 TOKEN_FILE = 'tokens.json'
+tokens = load_tokens()  # delete htis
 
 CLIENT_ID = os.getenv('CLIENT_ID')
 CLIENT_SECRET = os.getenv('CLIENT_SECRET')
@@ -25,18 +27,25 @@ def write_json(file_path, data):
 
 def refresh_token():
     # Step 1: Read the existing tokens
-    data = read_json(TOKEN_FILE)
-    refresh_token = data.get('refresh_token')
+    tokens = read_json(TOKEN_FILE)
+    client_id = tokens.get("client_id")
+    client_secret = tokens.get("client_secret")
+    refresh_token = tokens.get("refresh_token")
+    grant_type = tokens.get("grant_type")
 
+    if not client_id:
+        raise ValueError("Client_id not found in JSON file.")
+    if not client_secret:
+        raise ValueError("Client_secret not found in JSON file.")
     if not refresh_token:
         raise ValueError("Refresh token not found in JSON file.")
 
     token_url = 'https://app.clio.com/oauth/token'
     data = {
-        'client_id': CLIENT_ID,
-        'client_secret': CLIENT_SECRET,
+        'client_id': client_id,
+        'client_secret': client_secret,
         'refresh_token': refresh_token,
-        'grant_type': 'refresh_token',
+        'grant_type': grant_type,
     }
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded'
